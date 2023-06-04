@@ -1,16 +1,16 @@
-package org.koushik.javabrains.messenger;
+package org.koushik.javabrains.messenger.resources;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("myresource")
-public class MyResource {
-
+@Path("/messages")
+public class MessageResources {
+	
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getIt() {
-		return "Got it!";
+	public String getMessages() {
+		return "Hello World!";
 	}
 }
