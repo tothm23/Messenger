@@ -21,5 +21,30 @@ REST Web Szolgáltatás JAX-RS használatával
 2. Indítsd el a Tomcat Szervert (A Szerver fülön jobb click a Szerverre és start)
 3. Projekt Neve + jobb click > Run As > 1. Run on Server
 
+# REST Web Services 12 – Az alkalmazás szerkezetének megértése
+
+`http://localhost:8080/messenger/webapi/myresource`
+
+`http://localhost:8080`	Szerver, ami fut
+
+`messenger`	Projekt neve
+
+`webapi`	Valamilyen kontexus
+
+`myresource`	Erőforrás
+
+# REST Web Services 13 - Erőforrás létrehozása
+
+`<servlet-class>`	A Jersey azt az osztály fogja elindítani, ami ebben a tagben van
+
+`<init-param>` Ebben a tagben lesz a package `<param-name>`, amiben pedig egy osztály `<param-value>`, amely képes kezelni a kéréseket 
+
+1. Hozzon létre egy új Java osztályt
+2. Adjon hozzá egy metódust, amely visszaadja a választ
+3. Győződjön meg arról, hogy az osztály a Jersey-ben konfigurált servelt init-param-jában van
+4. Írja be az osztályt `@Patch` megjegyzéssel
+5. Annotálja a metódust a megfelelő HTTP-módszer-annotációval
+5. Írja be a metódust a `@Produces` válaszformátumot megadva
+
 # Köszönet
 [Java Brains](https://www.youtube.com/@Java.Brains)
