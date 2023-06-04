@@ -46,5 +46,17 @@ REST Web Szolgáltatás JAX-RS használatával
 5. Annotálja a metódust a megfelelő HTTP-módszer-annotációval
 5. Írja be a metódust a `@Produces` válaszformátumot megadva
 
+# REST Web Services 14 – XML-válasz visszaadása
+
+A model osztály az üzenet egy példányát tartalmazza
+
+A service osztály visszaada az üzenetek listáát vagy csatlakozik az adatbázishoz
+
+1. Hozza létre a szükséges modellt és szolgáltatási osztályokat
+2. Győződjön meg arról, hogy a modellosztályok rendelkeznek argumentummentes konstruktorral
+2. Hívja fel a szolgáltatást a MessageResource-ból, és válaszoljon
+4. Frissítse a `@Procedures` annotációt XML formátumra
+5. Jelölje meg a modellosztályt az `@XmlRootElement` elemmel
+
 # Köszönet
 [Java Brains](https://www.youtube.com/@Java.Brains)
