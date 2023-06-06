@@ -1,7 +1,6 @@
 package org.koushik.javabrains.messenger.model;
 
 import java.util.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement

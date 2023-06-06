@@ -58,5 +58,33 @@ A service osztály visszaada az üzenetek listáát vagy csatlakozik az adatbáz
 4. Frissítse a `@Procedures` annotációt XML formátumra
 5. Jelölje meg a modellosztályt az `@XmlRootElement` elemmel
 
+# DEBUG
+ 1. Frissítse a `@Procedures` annotációt JSON formátumra
+ 2. Illessze be a függőségeket a `pom.xml`-be 
+
+ ```xml
+ <!-- XmlRootElement Dependency from YouTube Comments -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>3.0.0-M3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-moxy</artifactId>
+		</dependency>
+
+		<!-- uncomment this to get JSON support -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-binding</artifactId>
+		</dependency>
+```
+
 # Köszönet
 [Java Brains](https://www.youtube.com/@Java.Brains)
