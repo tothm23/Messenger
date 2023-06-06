@@ -5,6 +5,7 @@ import java.util.List;
 import org.koushik.javabrains.messenger.model.Message;
 import org.koushik.javabrains.messenger.service.MessageService;
 
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -16,7 +17,7 @@ public class MessageResources {
 	MessageService messageService = new MessageService();
 	
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<Message> getMessages() {
 		return messageService.getAllMessages();
 	}

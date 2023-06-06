@@ -4,6 +4,8 @@ REST Web Szolgáltatás JAX-RS használatával
 # Eszközkészlet
 - Eclipse
 - Apache Tomcat 10.1.9
+- Java 17
+- Jersey 3.1.2
 
 # Projekt Létrehozása
 1. **New** > **Project** > **Maven** > **Maven Project**
@@ -54,9 +56,36 @@ A service osztály visszaada az üzenetek listáát vagy csatlakozik az adatbáz
 
 1. Hozza létre a szükséges modellt és szolgáltatási osztályokat
 2. Győződjön meg arról, hogy a modellosztályok rendelkeznek argumentummentes konstruktorral
-2. Hívja fel a szolgáltatást a MessageResource-ból, és válaszoljon
+3. Hívja fel a szolgáltatást a MessageResource-ból, és válaszoljon
 4. Frissítse a `@Procedures` annotációt XML formátumra
 5. Jelölje meg a modellosztályt az `@XmlRootElement` elemmel
 
+ # DEBUG
+ 1. Frissítse a `@Procedures` annotációt JSON formátumra
+ 2. Illessze be a függőségeket a `pom.xml`-be 
+ 
+ ```xml
+ <!-- XmlRootElement Dependency from YouTube Comments -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>3.0.0-M3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-moxy</artifactId>
+		</dependency>
+
+		<!-- uncomment this to get JSON support -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-binding</artifactId>
+		</dependency>
+```
 # Köszönet
 [Java Brains](https://www.youtube.com/@Java.Brains)
