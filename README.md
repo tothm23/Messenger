@@ -22,7 +22,7 @@ REST Web Szolgáltatás JAX-RS használatával
 2. Indítsd el a Tomcat Szervert (A Szerver fülön jobb click a Szerverre és start)
 3. Projekt Neve + jobb click > Run As > 1. Run on Server
 
-# REST Web Services 12 – Az alkalmazás szerkezetének megértése
+# Az alkalmazás szerkezetének megértése
 
 `http://localhost:8080/messenger/webapi/myresource`
 
@@ -34,7 +34,7 @@ REST Web Szolgáltatás JAX-RS használatával
 
 `myresource`	Erőforrás
 
-# REST Web Services 13 - Erőforrás létrehozása
+# Erőforrás létrehozása
 
 `<servlet-class>`	A Jersey azt az osztály fogja elindítani, ami ebben a tagben van
 
@@ -47,7 +47,7 @@ REST Web Szolgáltatás JAX-RS használatával
 5. Annotálja a metódust a megfelelő HTTP-módszer-annotációval
 5. Írja be a metódust a `@Produces` válaszformátumot megadva
 
-# REST Web Services 14 – XML-válasz visszaadása
+# XML-válasz visszaadása
 
 A model osztály az üzenet egy példányát tartalmazza
 
@@ -86,6 +86,11 @@ A service osztály visszaada az üzenetek listáát vagy csatlakozik az adatbáz
 			<artifactId>jersey-media-json-binding</artifactId>
 		</dependency>
 ```
+
+# A POST módszer megvalósítása
+1. Jelölje meg a kezelő metódust `@POST` és `@Procedures` segítségével
+2. Fogadja el a Model típust argumentumként a kérés törzséhez való kötéshez
+3. A `@Consumes` használatával adja meg a kivételes kéréstörzs formátumát
 
 # Köszönet
 [Java Brains](https://www.youtube.com/@Java.Brains)
