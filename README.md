@@ -4,6 +4,7 @@ REST Web Szolgáltatás JAX-RS használatával
 # Eszközkészlet
 - Eclipse
 - Apache Tomcat 10.1.9
+- Jersey 3.2.1
 
 # Projekt Létrehozása
 1. **New** > **Project** > **Maven** > **Maven Project**
