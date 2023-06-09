@@ -92,5 +92,8 @@ A service osztály visszaada az üzenetek listáát vagy csatlakozik az adatbáz
 2. Fogadja el a Model típust argumentumként a kérés törzséhez való kötéshez
 3. A `@Consumes` használatával adja meg a kivételes kéréstörzs formátumát
 
+# Lapozás és szűrés
+Hiba: Ne módosítsa a méretet >= 0-ra, ahogy az itt látható. Vagy a `getAllMessages()` metódus soha nem lesz meghívva!
+
 # Köszönet
 [Java Brains](https://www.youtube.com/@Java.Brains)
