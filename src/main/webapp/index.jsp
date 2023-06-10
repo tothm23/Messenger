@@ -7,5 +7,11 @@
 	<p>
 		<a href="webapi/messages">Messages resource</a>
 	</p>
+	<p>
+		<a href="webapi/profiles">Profiles resource</a>
+	</p>
+	<p>
+		<a href="webapi/injectdemo">InjectDemo resource</a>
+	</p>
 </body>
 </html>

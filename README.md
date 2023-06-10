@@ -64,27 +64,30 @@ A service osztály visszaada az üzenetek listáát vagy csatlakozik az adatbáz
  2. Illessze be a függőségeket a `pom.xml`-be 
 
  ```xml
- <!-- XmlRootElement Dependency from YouTube Comments -->
-		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-			<version>3.0.0-M3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-moxy</artifactId>
-		</dependency>
+<!-- XmlRootElement Dependency from YouTube Comments -->
 
-		<!-- uncomment this to get JSON support -->
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-json-binding</artifactId>
-		</dependency>
+<dependency>
+	<groupId>javax.xml.bind</groupId>
+	<artifactId>jaxb-api</artifactId>
+	<version>2.3.1</version>
+</dependency>
+
+<dependency>
+	<groupId>org.glassfish.jaxb</groupId>
+	<artifactId>jaxb-runtime</artifactId>
+	<version>3.0.0-M3</version>
+</dependency>
+
+<dependency>
+	<groupId>org.glassfish.jersey.media</groupId>
+	<artifactId>jersey-media-moxy</artifactId>
+</dependency>
+
+<!-- uncomment this to get JSON support -->
+<dependency>
+	<groupId>org.glassfish.jersey.media</groupId>
+	<artifactId>jersey-media-json-binding</artifactId>
+</dependency>
 ```
 
 # A POST módszer megvalósítása
@@ -94,6 +97,14 @@ A service osztály visszaada az üzenetek listáát vagy csatlakozik az adatbáz
 
 # Lapozás és szűrés
 Hiba: Ne módosítsa a méretet >= 0-ra, ahogy az itt látható. Vagy a `getAllMessages()` metódus soha nem lesz meghívva!
+
+# Paraméter Annotációk
+|Annotáció|URL|
+|------------|-----|
+|`@PathParam`|?param=value|
+|`@MatrixParam`|;param=value|
+|`@HeaderParam`|A Header-ben|
+|`@CookieParam`|A Cookie-ban|
 
 # Köszönet
 [Java Brains](https://www.youtube.com/@Java.Brains)
