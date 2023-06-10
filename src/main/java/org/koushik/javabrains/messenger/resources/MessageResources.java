@@ -3,8 +3,10 @@ package org.koushik.javabrains.messenger.resources;
 import java.util.List;
 
 import org.koushik.javabrains.messenger.model.Message;
+import org.koushik.javabrains.messenger.resources.beans.MessageFilterBean;
 import org.koushik.javabrains.messenger.service.MessageService;
 
+import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -24,13 +26,20 @@ public class MessageResources {
 	MessageService messageService = new MessageService();
 
 	@GET
-	public List<Message> getMessages(@QueryParam("year") int year, @QueryParam("start") int start,
-			@QueryParam("size") int size) {
-		if (year > 0) {
-			return messageService.getAllMessagesForYear(year);
+	public List<Message> getMessages(
+			/*
+			 * @QueryParam("year") int year,
+			 * 
+			 * @QueryParam("start") int start,
+			 * 
+			 * @QueryParam("size") int size
+			 */
+			@BeanParam MessageFilterBean mesaFilterBean) {
+		if (mesaFilterBean.getYear() > 0) {
+			return messageService.getAllMessagesForYear(mesaFilterBean.getYear());
 		}
-		if (start > 0 && size > 0) {
-			return messageService.getAllMessagesPaginated(start, size);
+		if (mesaFilterBean.getStart() > 0 && mesaFilterBean.getSize() > 0) {
+			return messageService.getAllMessagesPaginated(mesaFilterBean.getStart(), mesaFilterBean.getSize());
 		}
 		return messageService.getAllMessages();
 	}

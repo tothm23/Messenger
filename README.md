@@ -105,6 +105,8 @@ Hiba: Ne módosítsa a méretet >= 0-ra, ahogy az itt látható. Vagy a `getAllM
 |`@MatrixParam`|;param=value|
 |`@HeaderParam`|A Header-ben|
 |`@CookieParam`|A Cookie-ban|
+|`@Context`|Mindezeket magában foglalja. A `UriInfo` és a `HttpHeaders` osztállyal használható|
+|`@BeanParam`|Egy saját osztály, ami magána foglalja az annotációkat. Értékeikre getterekkel lehet hivatkozni|
 
 # Köszönet
 [Java Brains](https://www.youtube.com/@Java.Brains)
