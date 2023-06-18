@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.koushik.javabrains.messenger.database.DatabaseClass;
+import org.koushik.javabrains.messenger.exception.DataNotFoundException;
 import org.koushik.javabrains.messenger.model.Comment;
 import org.koushik.javabrains.messenger.model.Message;
 
@@ -15,7 +16,7 @@ public class MessageService {
 	private Map<Long, Message> messages = DatabaseClass.getMessages();
 
 	public MessageService() {
-		//messages.put(1L, new Message(1, "This is a message!", "Milán"));
+		// messages.put(1L, new Message(1, "This is a message!", "Milán"));
 	}
 
 	public List<Message> getAllMessages() {
@@ -50,7 +51,13 @@ public class MessageService {
 	}
 
 	public Message getMessage(long id) {
-		return messages.get(id);
+		Message message = messages.get(id);
+
+		if (message == null) {
+			throw new DataNotFoundException("Message with id " + id + " not found");
+		}
+
+		return message;
 	}
 
 	public Message addMessage(Message message) {

@@ -2,6 +2,9 @@ package org.koushik.javabrains.messenger.model;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Comment {
 	private long id;
 	private String message;
