@@ -1,5 +1,7 @@
 package org.koushik.javabrains.messenger.resources;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import org.koushik.javabrains.messenger.model.Message;
@@ -16,7 +18,11 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
+import jakarta.ws.rs.core.UriInfo;
 
 @Path("/messages")
 @Produces(MediaType.APPLICATION_JSON)
@@ -44,9 +50,21 @@ public class MessageResource {
 		return messageService.getAllMessages();
 	}
 
+	/*
+	 * @POST public Message addMessage(Message message) { return
+	 * messageService.addMessage(message); }
+	 */
+
 	@POST
-	public Message addMessage(Message message) {
-		return messageService.addMessage(message);
+	public Response addMessage(Message message, @Context UriInfo uriInfo) throws URISyntaxException {
+		Message newMessage = messageService.addMessage(message);
+		String newId = String.valueOf(newMessage.getId());
+		
+		// return Response.status(Status.CREATED).entity(newMessage).build();
+		
+		URI uri = uriInfo.getAbsolutePathBuilder().path(newId).build();
+		return Response.created(uri).entity(newMessage).build();
+		
 	}
 
 	@PUT
