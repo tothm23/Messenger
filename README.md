@@ -40,12 +40,17 @@ REST Web Szolgáltatás JAX-RS használatával
 
 `<init-param>` Ebben a tagben lesz a package `<param-name>`, amiben pedig egy osztály `<param-value>`, amely képes kezelni a kéréseket 
 
-1. Hozzon létre egy új Java osztályt
-2. Adjon hozzá egy metódust, amely visszaadja a választ
-3. Győződjön meg arról, hogy az osztály a Jersey-ben konfigurált servelt init-param-jában van
-4. Írja be az osztályt `@Patch` megjegyzéssel
-5. Annotálja a metódust a megfelelő HTTP-módszer-annotációval
-5. Írja be a metódust a `@Produces` válaszformátumot megadva
+1. Hozz létre egy új osztályt
+
+2. Adj hozzá egy metódust, amely visszaadja a választ
+
+3. Győződj meg arról, hogy az osztály a Jersey-ben konfigurált `servlet` tag `init-param`-jában van
+
+4. Írd meg az osztályt a `@Patch` annotációval
+
+5. Annotáld a metódust a megfelelő HTTP-módszer-annotációval
+
+6. Írd meg a metódust a `@Produces` válaszformátumot  megadva
 
 # XML-válasz visszaadása
 
@@ -53,15 +58,19 @@ A model osztály az üzenet egy példányát tartalmazza
 
 A service osztály visszaada az üzenetek listáát vagy csatlakozik az adatbázishoz
 
-1. Hozza létre a szükséges modellt és szolgáltatási osztályokat
-2. Győződjön meg arról, hogy a modellosztályok rendelkeznek argumentummentes konstruktorral
-2. Hívja fel a szolgáltatást a MessageResource-ból, és válaszoljon
-4. Frissítse a `@Procedures` annotációt XML formátumra
-5. Jelölje meg a modellosztályt az `@XmlRootElement` elemmel
+1. Hozzd  létre a szükséges  modelt  és  szolgáltatási  osztályokat
+
+2. Győződj  meg  arról, hogy a modellosztályok  rendelkeznek  argumentummentes  konstruktorral
+
+3. Hívd meg a szolgáltatást az erőforrás osztályban és válaszolj
+
+4. Frissítsd a `@Procedures`  annotációt XML formátumra
+
+5. Jelöld meg a modellosztályt  az`@XmlRootElement`  annotációval
 
 # DEBUG
- 1. Frissítse a `@Procedures` annotációt JSON formátumra
- 2. Illessze be a függőségeket a `pom.xml`-be 
+ 1. Frissítsd a `@Procedures` annotációt JSON formátumra
+ 2. Illeszd be a függőségeket a `pom.xml`-be 
 
  ```xml
 <!-- XmlRootElement Dependency from YouTube Comments -->
@@ -91,12 +100,14 @@ A service osztály visszaada az üzenetek listáát vagy csatlakozik az adatbáz
 ```
 
 # A POST módszer megvalósítása
-1. Jelölje meg a kezelő metódust `@POST` és `@Procedures` segítségével
-2. Fogadja el a Model típust argumentumként a kérés törzséhez való kötéshez
-3. A `@Consumes` használatával adja meg a kivételes kéréstörzs formátumát
+1. Jelöld meg a kezelő metódust `@POST` és `@Produces` segítségével
+
+2. Fogadd el a Model típust argumentumként a kérés törzséhez való kötéshez
+
+3. A `@Consumes` használatával add meg a kivételes kéréstörzs formátumát
 
 # Lapozás és szűrés
-Hiba: Ne módosítsa a méretet >= 0-ra, ahogy az itt látható. Vagy a `getAllMessages()` metódus soha nem lesz meghívva!
+Hiba: Ne módosítsd a méretet >= 0-ra, ahogy az itt látható. Vagy a `getAllMessages()` metódus soha nem lesz meghívva!
 
 # Paraméter Annotációk
 |Annotáció|URL|
