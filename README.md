@@ -108,5 +108,9 @@ Hiba: Ne módosítsa a méretet >= 0-ra, ahogy az itt látható. Vagy a `getAllM
 |`@Context`|Mindezeket magában foglalja. A `UriInfo` és a `HttpHeaders` osztállyal használható|
 |`@BeanParam`|Egy saját osztály, ami magána foglalja az annotációkat. Értékeikre getterekkel lehet hivatkozni|
 
+# Alforrások megvalósítása
+Az osztályszintű `@Path` annotáció nem kötelező az alerőforrások számára
+Az `@XmlTransient` annotáció megakadályozza a metódus leképezését, amikor az osztályt példányosítják
+
 # Köszönet
 [Java Brains](https://www.youtube.com/@Java.Brains)

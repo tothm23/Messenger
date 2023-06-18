@@ -21,7 +21,7 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/messages")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class MessageResources {
+public class MessageResource {
 
 	MessageService messageService = new MessageService();
 
@@ -66,5 +66,10 @@ public class MessageResources {
 	@Path("/{messageId}")
 	public Message test(@PathParam("messageId") long id) {
 		return messageService.getMessage(id);
+	}
+
+	@Path("/{messageId}/comments")
+	public CommentResource getCommentResource() {
+		return new CommentResource();
 	}
 }

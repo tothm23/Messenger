@@ -2,19 +2,21 @@ package org.koushik.javabrains.messenger.service;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.koushik.javabrains.messenger.database.DatabaseClass;
+import org.koushik.javabrains.messenger.model.Comment;
 import org.koushik.javabrains.messenger.model.Message;
 
 public class MessageService {
 
-	public MessageService() {
-		messages.put(1L, new Message(1, "Success!", "Milán"));
-	}
-
 	private Map<Long, Message> messages = DatabaseClass.getMessages();
+
+	public MessageService() {
+		//messages.put(1L, new Message(1, "This is a message!", "Milán"));
+	}
 
 	public List<Message> getAllMessages() {
 		return new ArrayList<Message>(messages.values());
