@@ -6,14 +6,20 @@ import java.util.Map;
 
 import org.koushik.javabrains.messenger.database.DatabaseClass;
 import org.koushik.javabrains.messenger.model.Comment;
+import org.koushik.javabrains.messenger.model.ErrorMessage;
 import org.koushik.javabrains.messenger.model.Message;
+
+import jakarta.ws.rs.NotFoundException;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 public class CommentService {
 
 	private Map<Long, Message> messages = DatabaseClass.getMessages();
 
 	public CommentService() {
-		//messages.put(1L, new Message(1, "This is a comment!", "Milán"));
+		// messages.put(1L, new Message(1, "This is a comment!", "Milán"));
 	}
 
 	public List<Comment> getAllComments(long messageId) {
@@ -22,8 +28,23 @@ public class CommentService {
 	}
 
 	public Comment getComment(long messageId, long commentId) {
+
+		ErrorMessage errorMessage = new ErrorMessage("Not found", 404, "This is the documentation 2");
+		Response response = Response.status(Status.NOT_FOUND).entity(errorMessage).build();
+		
+		Message message = messages.get(messageId);
+		if (message == null) {
+			throw new WebApplicationException(response);
+		}
+
 		Map<Long, Comment> comments = messages.get(messageId).getComments();
-		return comments.get(commentId);
+		
+		Comment comment = comments.get(commentId);
+		if (comment == null) {
+			throw new NotFoundException(response);
+		}
+
+		return comment;
 	}
 
 	public Comment addComment(long messageId, Comment comment) {
