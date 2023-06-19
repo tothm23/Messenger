@@ -25,14 +25,15 @@ import jakarta.ws.rs.core.Response.Status;
 import jakarta.ws.rs.core.UriInfo;
 
 @Path("/messages")
-@Produces(MediaType.APPLICATION_JSON)
+@Produces(value = { MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
 @Consumes(MediaType.APPLICATION_JSON)
 public class MessageResource {
 
 	MessageService messageService = new MessageService();
 
 	@GET
-	public List<Message> getMessages(
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Message> getJsonMessages(
 			/*
 			 * @QueryParam("year") int year,
 			 * 
@@ -41,6 +42,28 @@ public class MessageResource {
 			 * @QueryParam("size") int size
 			 */
 			@BeanParam MessageFilterBean mesaFilterBean) {
+		System.out.println("JSON method called");
+		if (mesaFilterBean.getYear() > 0) {
+			return messageService.getAllMessagesForYear(mesaFilterBean.getYear());
+		}
+		if (mesaFilterBean.getStart() > 0 && mesaFilterBean.getSize() > 0) {
+			return messageService.getAllMessagesPaginated(mesaFilterBean.getStart(), mesaFilterBean.getSize());
+		}
+		return messageService.getAllMessages();
+	}
+
+	@GET
+	@Produces(MediaType.TEXT_XML)
+	public List<Message> getXmlMessages(
+			/*
+			 * @QueryParam("year") int year,
+			 * 
+			 * @QueryParam("start") int start,
+			 * 
+			 * @QueryParam("size") int size
+			 */
+			@BeanParam MessageFilterBean mesaFilterBean) {
+		System.out.println("XML method called");
 		if (mesaFilterBean.getYear() > 0) {
 			return messageService.getAllMessagesForYear(mesaFilterBean.getYear());
 		}
