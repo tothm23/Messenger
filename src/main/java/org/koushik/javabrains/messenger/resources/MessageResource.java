@@ -84,7 +84,11 @@ public class MessageResource {
 	@Path("/{messageId}")
 	public Message getMessage(@PathParam("messageId") long id, @Context UriInfo uriInfo) {
 		Message message = messageService.removeMessage(id);
+
 		message.addLink(getUriForSelf(uriInfo, message), "self");
+		message.addLink(getUriForProfile(uriInfo, message), "profile");
+		message.addLink(getUriForComments(uriInfo, message), "comments");
+
 		return message;
 	}
 
@@ -93,6 +97,22 @@ public class MessageResource {
 				.path(MessageResource.class) // /messages
 				.path(Long.toString(message.getId())) // /{messageId}
 				.build().toString();
+		return uri;
+	}
+
+	private String getUriForProfile(UriInfo uriInfo, Message message) {
+		String uri = uriInfo.getBaseUriBuilder() // http://localhost:8080/messenger/webapi
+				.path(ProfileResource.class) // /profiles
+				.path(message.getAuthor()) // /{authorName}
+				.build().toString();
+		return uri;
+	}
+
+	private String getUriForComments(UriInfo uriInfo, Message message) {
+		String uri = uriInfo.getBaseUriBuilder() // http://localhost:8080/messenger/webapi
+				.path(MessageResource.class) // /messages
+				.path(MessageResource.class, "getCommentResource").path(CommentResource.class)
+				.resolveTemplate("messageId", message.getId()).build().toString();
 		return uri;
 	}
 
