@@ -59,12 +59,12 @@ public class MessageResource {
 	public Response addMessage(Message message, @Context UriInfo uriInfo) throws URISyntaxException {
 		Message newMessage = messageService.addMessage(message);
 		String newId = String.valueOf(newMessage.getId());
-		
+
 		// return Response.status(Status.CREATED).entity(newMessage).build();
-		
+
 		URI uri = uriInfo.getAbsolutePathBuilder().path(newId).build();
 		return Response.created(uri).entity(newMessage).build();
-		
+
 	}
 
 	@PUT
@@ -82,8 +82,18 @@ public class MessageResource {
 
 	@GET
 	@Path("/{messageId}")
-	public Message test(@PathParam("messageId") long id) {
-		return messageService.getMessage(id);
+	public Message getMessage(@PathParam("messageId") long id, @Context UriInfo uriInfo) {
+		Message message = messageService.removeMessage(id);
+		message.addLink(getUriForSelf(uriInfo, message), "self");
+		return message;
+	}
+
+	private String getUriForSelf(UriInfo uriInfo, Message message) {
+		String uri = uriInfo.getBaseUriBuilder() // http://localhost:8080/messenger/webapi
+				.path(MessageResource.class) // /messages
+				.path(Long.toString(message.getId())) // /{messageId}
+				.build().toString();
+		return uri;
 	}
 
 	@Path("/{messageId}/comments")
